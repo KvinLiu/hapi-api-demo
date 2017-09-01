@@ -30,6 +30,22 @@ server.route({
   }
 });
 
+// Tasks Route
+server.route({
+  method: 'GET',
+  path: '/tasks',
+  handler: (request, reply) => {
+    reply.view('tasks', {
+      tasks: [
+        {text: 'Text One'},
+        {text: 'Text Two'},
+        {text: 'Text Three'},
+        {text: 'Text Four'}
+      ]
+    });
+  }
+});
+
 // Static Routes
 server.register(require('inert'), (err) => {
   if (err) {
