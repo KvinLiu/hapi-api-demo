@@ -38,7 +38,7 @@ server.route({
   }
 });
 
-// Tasks Route
+// GET Tasks Route
 server.route({
   method: 'GET',
   path: '/tasks',
@@ -58,6 +58,20 @@ server.route({
     //     {text: 'Text Four'}
     //   ]
     // });
+  }
+});
+
+// POST Tasks Route
+server.route({
+  method: 'POST',
+  path: '/tasks',
+  handler: (request, reply) => {
+    let text = request.payload.text;
+    let newTask = new Task({text});
+    newTask.save((err, task) => {
+      if (err) return console.log(err);
+      return reply.redirect().location('tasks');
+    })
   }
 });
 
