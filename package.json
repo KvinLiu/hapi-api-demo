@@ -1,0 +1,11 @@
+{
+  "name": "hapi_demo",
+  "version": "1.0.0",
+  "description": "Demo hapi project",
+  "main": "index.js",
+  "author": "Kevin",
+  "license": "MIT",
+  "dependencies": {
+    "hapi": "^16.5.2"
+  }
+}
