@@ -27,6 +27,29 @@ server.route({
   }
 });
 
+// Static Routes
+server.register(require('inert'), (err) => {
+  if (err) {
+    throw err;
+  }
+
+  server.route({
+    method: 'GET',
+    path: '/about',
+    handler: (request, reply) => {
+      reply.file('./public/about.html');
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/image',
+    handler: (request, reply) => {
+      reply.file('./public/hapi.jpeg');
+    }
+  });
+});
+
 // Start Server
 server.start((err) => {
   if (err) {
