@@ -14,7 +14,10 @@ server.route({
   method: 'GET',
   path: '/',
   handler: (request, reply) => {
-    reply('<h1>Hello World</h1>');
+    // reply('<h1>Hello World</h1>');
+    reply.view('index', {
+      name: 'jhon Doe'
+    });
   }
 });
 
@@ -48,6 +51,21 @@ server.register(require('inert'), (err) => {
       reply.file('./public/hapi.jpeg');
     }
   });
+});
+
+// Vision Templates
+server.register(require('vision'), (err) => {
+  if (err) {
+    throw err;
+  }
+
+  server.views({
+    engines: {
+      html: require('handlebars')
+    },
+    path: __dirname + '/views'
+  });
+
 });
 
 // Start Server
